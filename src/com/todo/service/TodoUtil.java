@@ -111,9 +111,7 @@ public class TodoUtil {
 
 
 		for (TodoItem item : list.getList()) {
-			System.out.println("할 일: 조영찬 바보만들기 ");
-			w.write(item.toString());
-			System.out.println("할 일: " + item.getTitle() + "  내용:  " + item.getDesc());
+			w.write(item.toSaveString());
 		}
 		
 //		w.write(i.toString());
@@ -140,20 +138,13 @@ public class TodoUtil {
 			while((str = reader.readLine()) != null) {
 				StringTokenizer st = new StringTokenizer(str,"##");
 				title = st.nextToken();
-				System.out.print(title);
 				desc = st.nextToken();
-				System.out.print(desc);
 				current_date = st.nextToken();
-				System.out.println(current_date);
 				TodoItem t = new TodoItem(title, desc);
 				list.addItem(t);
-				System.out.println(t);
-				System.out.println(list.getList());
-				listAll(list);
 				
 			}
 			reader.close();
-			System.out.println("가져오기 완료");
 		} catch(FileNotFoundException e) {
 			e.printStackTrace();
 		} catch (IOException e) {

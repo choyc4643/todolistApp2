@@ -9,13 +9,11 @@ public class TodoMain {
 	public static void start() {
 
 		TodoList l = new TodoList();
-		TodoList x = new TodoList();
 
-		TodoUtil.loadList(x,"todolist.txt");
+		TodoUtil.loadList(l,"todolist.txt");
 
 		Menu.displaymenu();
-		Menu.prompt(x);
-		TodoUtil.listAll(x);
-		TodoUtil.saveList(x, "todolist.txt");
+		Menu.prompt(l);
+		TodoUtil.saveList(l, "todolist.txt");
 	}
 }
