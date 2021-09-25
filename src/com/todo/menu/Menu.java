@@ -16,13 +16,14 @@ public class Menu {
         System.out.println("5. 오늘의 할 일 정렬! [이름순] ( ls_name_asc )");
         System.out.println("6. 오늘의 할 일 정렬! [이름역순] ( ls_name_desc )");
         System.out.println("7. 오늘의 할 일 정렬! [날짜순] ( ls_date )");
-        System.out.println("8. 나가기 (exit or press escape key)");
+        System.out.println("8. keyword 찾기! ( find )");
+        System.out.println("9. 나가기 (exit or press escape key)");
     }
     
     public static void prompt(TodoList l) {
     	
 		Scanner sc = new Scanner(System.in);
-		l = new TodoList();
+//		l = new TodoList();
 		boolean isList = false;
 		boolean quit = false;
     	do {
@@ -71,6 +72,10 @@ public class Menu {
 
 			case "exit":
 				quit = true;
+				break;
+			
+			case "find":
+				TodoUtil.findKeyword(l);
 				break;
 
 			default:

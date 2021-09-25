@@ -19,6 +19,14 @@ public class TodoList {
 	public void deleteItem(TodoItem t) {
 		list.remove(t);
 	}
+	public void deleteItem(int t) {
+		list.remove(t);
+	}
+	public TodoItem getTitle(int t) {
+		return list.get(t);
+	}
+	
+	
 
 	void editItem(TodoItem t, TodoItem updated) {
 		int index = list.indexOf(t);
