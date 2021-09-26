@@ -57,10 +57,10 @@ public class TodoUtil {
 		
 		int index = sc.nextInt();
 		
-		TodoItem title = l.getTitle(index);
+		TodoItem title = l.getTitle(index-1);
 		System.out.println(title +"이 삭제되었습니다.");
 
-		l.deleteItem(index);
+		l.deleteItem(index-1);
 		
 	}
 
@@ -70,13 +70,16 @@ public class TodoUtil {
 		
 		System.out.println("\n"
 				+ "<할 일 수정>\n"
-				+ "수정할 할 일의 제목을 입력하세요.\n"
+				+ "수정할 할 일의 번호를 입력하세요.\n"
 				+ "\n");
-		String title = sc.nextLine().trim();
-		if (!l.isDuplicate(title)) {
-			System.out.println("해당하는 제목이 존재하지 않습니다.");
-			return;
-		}
+		int index = sc.nextInt();
+
+//		String title = sc.nextLine().trim();
+//		if (!l.isDuplicate(title)) {
+//			System.out.println("해당하는 제목이 존재하지 않습니다.");
+//			return;
+//		}
+		String str = sc.nextLine();
 
 		System.out.println("카테고리 입력");
 		String category = sc.nextLine().trim();
@@ -94,14 +97,14 @@ public class TodoUtil {
 		System.out.println("새로운 마감날짜 입력 ");
 		String new_due_date = sc.nextLine().trim();
 		
-		for (TodoItem item : l.getList()) {
-			if (item.getTitle().equals(title)) {
-				l.deleteItem(item);
+//		for (TodoItem item : l.getList()) {
+//			if (item.getTitle().equals(title)) {
+				l.deleteItem(index-1);
 				TodoItem t = new TodoItem(category, new_title, new_description, new_due_date);
 				l.addItem(t);
 				System.out.println("내용이 수정되었습니다.");
-			}
-		}
+//			}
+//		}
 
 	}
 
@@ -138,6 +141,56 @@ public class TodoUtil {
 			}
 		}
 	}
+	
+	public static void findCate(TodoList l) {
+		Scanner sc = new Scanner(System.in);
+
+		String keyword;
+
+		System.out.println("keyword를 입력하세요. >");
+		keyword = sc.nextLine();
+
+		for (TodoItem item : l.getList()) {
+			if(item.getCategory().contains(keyword)) {
+
+				System.out.println(l.indexOf(item)+1 +". [" + item.getCategory() + "]" +"할 일: " + item.getTitle() + "  내용:  " + item.getDesc() + "  마감날짜:  " + item.getDue_date() );
+			}
+		}
+	}
+	
+	public static void ls_cate(TodoList l) {
+
+		String keyword;
+		int cnt=0;
+
+		for (TodoItem k : l.getList()) {
+			keyword = k.getCategory();
+			cnt=0;
+			
+			for (TodoItem item : l.getList()) {
+				
+				if(keyword.equals(item.getCategory())) {
+					cnt ++;
+					System.out.print(cnt);
+
+				}
+
+
+		
+			}
+			if(cnt ==1) {
+				System.out.print(k.getCategory() + " ");
+			}
+		
+		}
+		
+		
+		
+		
+		
+//		cate.equals(item.getCategory())
+}
+	
 	
 	
 	public static void saveList(TodoList list, String filename) {

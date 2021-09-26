@@ -58,6 +58,11 @@ public class TodoList {
 	public void sortByDate() {
 		Collections.sort(list, new TodoSortByDate());
 	}
+	
+	public void reverseDate() {
+		Collections.sort(list, new TodoSortByDate());
+		Collections.reverse(list);
+	}
 
 	public int indexOf(TodoItem t) {
 		return list.indexOf(t);
@@ -66,6 +71,12 @@ public class TodoList {
 	public Boolean isDuplicate(String title) {
 		for (TodoItem item : list) {
 			if (title.equals(item.getTitle())) return true;
+		}
+		return false;
+	}
+	public Boolean isDuplicate_cate(String cate) {
+		for (TodoItem item : list) {
+			if (cate.equals(item.getCategory())) return true;
 		}
 		return false;
 	}

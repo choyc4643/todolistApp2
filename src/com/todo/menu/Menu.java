@@ -16,8 +16,11 @@ public class Menu {
         System.out.println("5. 오늘의 할 일 정렬! [이름순] ( ls_name_asc )");
         System.out.println("6. 오늘의 할 일 정렬! [이름역순] ( ls_name_desc )");
         System.out.println("7. 오늘의 할 일 정렬! [날짜순] ( ls_date )");
-        System.out.println("8. keyword 찾기! ( find )");
-        System.out.println("9. 나가기 (exit or press escape key)");
+        System.out.println("8. 오늘의 할 일 정렬! [날짜역순] ( ls_date_rev )");
+        System.out.println("9. Keyword 찾기! ( find )");
+        System.out.println("10. Category 찾기! ( find_cate )");
+        System.out.println("11. Category 목록! ( ls_cate )");
+        System.out.println("12. 나가기 (exit or press escape key)");
     }
     
     public static void prompt(TodoList l) {
@@ -60,11 +63,17 @@ public class Menu {
 				l.reverseList();
 				isList = true;
 				break;
-				
+								
 			case "ls_date":
 				l.sortByDate();
 				isList = true;
 				break;
+				
+			case "ls_date_rev":
+				l.sortByDate();
+				l.reverseDate();
+				isList = true;
+				break; 
 				
 			case "help":
 				Menu.displaymenu();
@@ -76,6 +85,14 @@ public class Menu {
 			
 			case "find":
 				TodoUtil.findKeyword(l);
+				break;
+				
+			case "find_cate":
+				TodoUtil.findCate(l);
+				break;
+				
+			case "ls_cate":
+				TodoUtil.ls_cate(l);
 				break;
 
 			default:
