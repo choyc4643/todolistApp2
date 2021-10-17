@@ -10,10 +10,7 @@ public class TodoMain {
 
 		TodoList l = new TodoList();
 
-//		TodoUtil.importData("todolist.txt");
-//		TodoUtil.loadList(l,"todolist.txt");
 		Menu.displaymenu();
 		Menu.prompt(l);
-//		TodoUtil.saveList(l, "todolist.txt");
 	}
 }

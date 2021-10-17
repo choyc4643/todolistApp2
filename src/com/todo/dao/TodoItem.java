@@ -10,16 +10,21 @@ public class TodoItem {
     private String desc;
     private String due_date;
     private String current_date;
+    private String withWhom;
+    private int importance;
+    private int is_completed;
 
 
-    public TodoItem(String category, String title, String desc, String due_date){
+    public TodoItem(String category, String title, String desc, String due_date, String withWhom, int importance, int is_completed){
         this.category=category;
         this.title=title;
         this.desc=desc;
         this.due_date = due_date;
+        this.withWhom = withWhom;
         SimpleDateFormat f = new SimpleDateFormat("yyyy/MM/dd kk:mm:ss");
         this.current_date = f.format(new Date());
-        
+        this.importance = importance;
+        this.is_completed = is_completed;
     }
     
     public int getId() {
@@ -72,11 +77,33 @@ public class TodoItem {
     
     @Override
     public String toString() {
-    	return id + " [" + category + "] " + title + " - " + desc + " - " + due_date + " - " + current_date + "\n";
+    	return id + " [" + category + "] " + title + " - " + desc + " - "+ withWhom + " - " + due_date + " - " + current_date + " - " + importance + " - "+ is_completed + "\n";
     }
-    public String toSaveString() {
-    	return category + "##" + title + "##" + desc + "##" + due_date + "##" + current_date + "\n";
-    }
+
+	public String getWithWhom() {
+		return withWhom;
+	}
+
+	public void setWithWhom(String withWhom) {
+		this.withWhom = withWhom;
+	}
+
+	public int getImportance() {
+		return importance;
+	}
+
+	public void setImportance(int importance) {
+		this.importance = importance;
+	}
+
+	public int getIs_completed() {
+		return is_completed;
+	}
+
+	public void setIs_completed(int is_completed) {
+		this.is_completed = is_completed;
+	}
+	
     
 
 }
